@@ -1,14 +1,20 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "NPC_Controller.h"
 
+#include "BehaviorTree/BehaviorTree.h"
+
 void ANPC_Controller::Init(USplineComponent* trackRef)
 {
 	track = trackRef;
 	car = Cast<AWheeledVehiclePawn, APawn>(GetPawn());
+	RunBehaviorTree(behaviourTree);
 }
 
-void ANPC_Controller::TickAI(float& accel, float& brake, float& steering)
+void ANPC_Controller::TickAI()
 {
+	float steering;
+
+
 	FVector carFwd = car->GetActorForwardVector();
 	FVector carRight = car->GetActorRightVector();
 	carRight.Normalize();
@@ -33,8 +39,10 @@ void ANPC_Controller::TickAI(float& accel, float& brake, float& steering)
 
 	float forwardForce = abs(FVector::DotProduct(trackDir, carFwd));
 
-	accel = FMath::Clamp((forwardForce - accelThreshold) / (1 - accelThreshold), 0.0f, 1.0f);
-	brake = FMath::Clamp(1 - forwardForce / accelThreshold, 0.0f, 1.0f);
+	float accel = FMath::Clamp((forwardForce - accelThreshold) / (1 - accelThreshold), 0.0f, 1.0f);
+	float brake = FMath::Clamp(1 - forwardForce / accelThreshold, 0.0f, 1.0f);
+
+	onTick.Broadcast(steering, accel, brake);
 }
 
 ANPC_Controller::ANPC_Controller(FObjectInitializer const& ObjectInitializer)

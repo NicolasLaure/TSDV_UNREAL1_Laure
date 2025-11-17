@@ -20,14 +20,22 @@ class TSDV_UNREAL1_LAURE_API ANPC_Controller : public AAIController
 	AWheeledVehiclePawn* car;
 
 public:
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnTick, float, steerForce, float, accelForce, float, brake);
+
+	UPROPERTY(BlueprintAssignable)
+	FOnTick onTick;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBehaviorTree* behaviourTree;
+
 	UPROPERTY(BlueprintReadWrite)
 	float steeringForce = 0.7f;
-	
+
 	UPROPERTY(BlueprintReadWrite)
 	float carWidth = 1.0f;
 	UPROPERTY(BlueprintReadWrite)
 	float minDistance = 1.0f;
-	
+
 	UPROPERTY(BlueprintReadWrite)
 	float accelThreshold = 0.85f;
 
@@ -35,7 +43,7 @@ public:
 	void Init(USplineComponent* trackRef);
 
 	UFUNCTION(BlueprintCallable)
-	void TickAI(float& accel, float& brake, float& steering);
+	void TickAI();
 
 	explicit ANPC_Controller(FObjectInitializer const& ObjectInitializer);
 };
