@@ -6,7 +6,6 @@
 #include "AIController.h"
 #include "WheeledVehiclePawn.h"
 #include "Components/SplineComponent.h"
-#include "ChaosWheeledVehicleMovementComponent.h"
 #include "NPC_Controller.generated.h"
 
 /**
