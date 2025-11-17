@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "ChaosVehicles/Public/WheeledVehiclePawn.h"
 #include "AI_Car.generated.h"
 
 UCLASS()
-class TSDV_UNREAL1_LAURE_API AAI_Car : public APawn
+class TSDV_UNREAL1_LAURE_API AAI_Car : public AWheeledVehiclePawn
 {
 	GENERATED_BODY()
 

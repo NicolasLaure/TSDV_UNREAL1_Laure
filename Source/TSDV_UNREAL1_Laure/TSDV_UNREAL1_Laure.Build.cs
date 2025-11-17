@@ -14,7 +14,8 @@ public class TSDV_UNREAL1_Laure : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
-			"AIModule"
+			"AIModule",
+			"ChaosVehicles"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
