@@ -12,7 +12,7 @@ void ANPC_Controller::Init(USplineComponent* trackRef)
 
 void ANPC_Controller::TickAI()
 {
-	float steering;
+	float steering= 0.0f;
 
 
 	FVector carFwd = car->GetActorForwardVector();

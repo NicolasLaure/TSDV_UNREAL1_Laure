@@ -3,7 +3,6 @@
 
 #include "MainMenu.h"
 
-#include "AssetTypeCategories.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
@@ -17,6 +16,7 @@ void AMainMenu::Init()
 	menuUI = Cast<UMainMenuUI>(CreateWidget(GetWorld(), MenuUIBp));
 	menuUI->AddToViewport();
 
+	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
 	menuUI->onPlay.AddUObject(this, &AMainMenu::Play);
 	menuUI->onQuit.AddUObject(this, &AMainMenu::Quit);
 }
