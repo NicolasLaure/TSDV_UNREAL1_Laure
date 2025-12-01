@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
-#include "MainMenuUI.generated.h"
+#include "MainMenuWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TSDV_UNREAL1_LAURE_API UMainMenuUI : public UUserWidget
+class TSDV_UNREAL1_LAURE_API UMainMenuWidget : public UUserWidget
 {
 	GENERATED_BODY()
 

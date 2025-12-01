@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "MainMenuUI.h"
+#include "MenuHUD.h"
 #include "MainMenu.generated.h"
 
 /**
@@ -15,18 +15,14 @@ class TSDV_UNREAL1_LAURE_API AMainMenu : public AGameModeBase
 {
 	GENERATED_BODY()
 
-private:
-	UMainMenuUI* menuUI;
+	AMenuHUD* menuHUD;
 
 public:
 	AMainMenu();
-	UPROPERTY(BlueprintReadWrite)
-	TSubclassOf<UMainMenuUI> MenuUIBp;
 
 	UFUNCTION(BlueprintCallable)
 	void Init();
 
-protected:
 	UFUNCTION()
 	void Play();
 	UFUNCTION()
